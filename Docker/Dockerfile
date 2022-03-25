@@ -1,11 +1,13 @@
 FROM node:17
 
-WORKDIR /stock
+WORKDIR /payment
 
-COPY stock/package.json ./
+COPY yarn.lock package.json ./
 
 RUN yarn
 
-COPY stock/. .
+COPY . .
+
+RUN yarn build
 
 CMD ["yarn","start"]
